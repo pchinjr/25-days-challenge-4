@@ -8,6 +8,7 @@ get /todos
 post /todos
 post /todos/delete
 get /dishes
+post /dish
 
 @tables
 data
