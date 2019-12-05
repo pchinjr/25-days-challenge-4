@@ -7,6 +7,7 @@ local-kya
 get /todos
 post /todos
 post /todos/delete
+get /dishes
 
 @tables
 data
