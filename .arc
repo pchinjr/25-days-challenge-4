@@ -8,7 +8,7 @@ get /todos
 post /todos
 post /todos/delete
 get /dishes
-post /dish
+post /dishes
 post /dishes/delete
 
 @tables

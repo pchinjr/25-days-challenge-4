@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width">
   <meta name="theme-color" content="#132865">
   <meta name="msapplication-TileColor" content="#132865">
-  <title>Todos</title>
+  <title>dishes</title>
   <style>
     :root {
       --grey: #D8D8D8;
@@ -308,11 +308,11 @@
             font-size-4-tablet
           "
         >
-          Todos
+          dishes
         </h1>
       </div>
       <form
-        action="/todos"
+        action="/dishes"
         method="POST"
         class="
           display-flex
@@ -357,7 +357,7 @@
     </div>
     <ul
       class="margin-bottom-32 list-style-none"
-      id="js-todos"
+      id="js-dishes"
     >
     </ul>
     <h2
@@ -407,9 +407,9 @@
       // Kick off the app
       init()
 
-      // GET all todos
+      // GET all dishes
       function init () {
-        fetch('/todos', {
+        fetch('/dishes', {
           credentials: 'same-origin',
           headers: {
             'Content-Type': 'application/json'
@@ -417,17 +417,17 @@
         })
         .then(res => res)
         .then(body => body.json())
-        // Call update with fetched todos
-        .then(json => update(json.todos))
+        // Call update with fetched dishes
+        .then(json => update(json.dishes))
       }
 
       // Update the DOM with data
-      function update (todos) {
-        let list = document.getElementById('js-todos')
+      function update (dishes) {
+        let list = document.getElementById('js-dishes')
         let completed = document.getElementById('js-completed')
         let message = document.getElementById('js-message')
-        let current = todos.filter(t => !t.completed)
-        let complete = todos.filter(t => t.completed)
+        let current = dishes.filter(t => !t.completed)
+        let complete = dishes.filter(t => t.completed)
         let doneTitle = document.getElementById('js-done-title')
         let done = complete.length && !current.length
         let none = !complete.length && !current.length
@@ -450,11 +450,11 @@
         }
 
         list && current.length
-          ? list.innerHTML = current.map(t => Todo(t)).join('')
+          ? list.innerHTML = current.map(t => Dish(t)).join('')
           : ''
 
         completed && complete.length
-          ? completed.innerHTML = complete.map(t => Todo(t)).join('')
+          ? completed.innerHTML = complete.map(t => Dish(t)).join('')
           : ''
       }
 
@@ -469,7 +469,7 @@
         `
       }
 
-      function Todo (props) {
+      function Dish (props) {
         let text = props.text || ''
         let id = props.key || ''
         let created = props.created
@@ -487,7 +487,7 @@
   "
 >
   <form
-    action="/todos"
+    action="/dishes"
     method="POST"
     class="
       min-width-0
@@ -541,7 +541,7 @@
     </button>
   </form>
   <form
-    action="/todos/delete"
+    action="/dishes/delete"
     method="POST"
   >
     <input type="hidden" name="key" value="${id}" />
